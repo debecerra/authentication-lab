@@ -1,6 +1,9 @@
 Question 1: What authentication scheme is used by default in Django Rest Framework's browsable API? How is this managed?
 
-The authentication scheme used by default in Django Rest Framework browsable API is session authentication and basic authentication. Session authentication is managed by on the server-side. 
+The authentication scheme used by default in Django Rest Framework browsable API is session authentication and basic authentication. Clients need to authenticate using username and password, and the server keeps track of user sessions.
+
+
+
 
 
 Question 2: What authentication scheme is used by httpie when querying with the -a or --auth option flag?
@@ -8,16 +11,25 @@ Question 2: What authentication scheme is used by httpie when querying with the 
 The default authentication scheme used by httpie is basic authentication.
 
 
+
+
+
 Question 3: What is the difference between Session Authentication and Token Authentication? How is Token Authentication an improvement over Basic Authentication?
 
-Session authentication is handled on the server-side. The server needs to remember data in order to authenticate users. Token authentication is handled on the client-side, meaning the client has to keep track of it's authentication token.
+Session authentication is handled on the server-side. The server needs to remember data in order to authenticate users. Token authentication is handled on the client-side, meaning the client has to keep track of its authentication token. Token authentication is an improvement over basic authentication since it does not require the user to expose their username and password at the risk of leaking it. It is also easier to revoke tokens than it is to fix a password leak.
 
 
-Question 4: Provide a high level summary of what happens during an OAuth2 authentication flow. For instance: bitbucket.org > Log In > Log in with Google. What happens when I click "Log in with Google"?
 
-OAuth2 works by delegating authentication, authorization, and storage of user account data to third-party application such as Google. An application will ask to user to access their third-party account data (e.g. Google account). If the user accepts, the application then goes to the authorization server with proof of its identity and proof that the user accepted, and it requests an  access token. When the application needs to access the user's account, it makes a request to the resource server using it's access token. 
+
+
+Question 4: Provide a high-level summary of what happens during an OAuth2 authentication flow. For instance: bitbucket.org > Log In > Log in with Google. What happens when I click "Log in with Google"?
+
+OAuth2 works by delegating authentication, authorization, and storage of user account data to third-party applications such as Google. An application will ask the user to access their third-party account data (e.g. Google account). If the user accepts, the application then goes to the authorization server with proof of its identity and proof that the user gave permission, and it requests an access token. If everything is in order, the authorization server gives the user the access token. When the application needs to access the user's account, it makes a request to the resource server using its access token. 
 
 (Mitchell Anicas, https://www.digitalocean.com/community/users/manicas, An Introduction to OAuth 2, July 28, 2021, https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2)
+
+
+
 
 
 Question 5: Please provide a link to your code.
